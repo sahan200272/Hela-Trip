@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "165574279956",
+    "project_id": "hela-trip",
+    "storage_bucket": "hela-trip.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:165574279956:android:89503ba3228278303ab801",
+        "android_client_info": {
+          "package_name": "com.example.hela_trip"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjGJNbPhqYAxBt9UehihkrwMzv0auhLtQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -65,4 +62,15 @@ class DefaultFirebaseOptions {
     storageBucket: 'hela-trip.firebasestorage.app',
     iosBundleId: 'com.example.helaTrip',
   );
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyAyn0W8GRF6SZGOPqsDDlLbIdHPSJOKr70',
+    appId: '1:165574279956:web:220a4bb55a5bcdfd3ab801',
+    messagingSenderId: '165574279956',
+    projectId: 'hela-trip',
+    authDomain: 'hela-trip.firebaseapp.com',
+    storageBucket: 'hela-trip.firebasestorage.app',
+    measurementId: 'G-XQQVFT7RH5',
+  );
+
 }

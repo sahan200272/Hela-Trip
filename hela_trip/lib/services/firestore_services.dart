@@ -1,10 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FirebaseService {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  
+  final FirebaseFirestore firestore;
+
+  FirebaseService({required this.firestore});
 
   Future<void> addMessage() async {
-    await _firestore.collection('test').add({
+    await firestore.collection('test').add({
       'message': 'Hello Firebase',
       'time': DateTime.now(),
     });

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer';
 
@@ -26,8 +27,8 @@ class MyApp extends StatelessWidget {
 class FirestoreTestPage extends StatelessWidget {
   FirestoreTestPage({super.key});
 
-  // ✅ Create service instance
-  final FirebaseService _firebaseService = FirebaseService();
+  // Create service instance
+  final FirebaseService _firebaseService = FirebaseService(firestore: FirebaseFirestore.instance);
 
   @override
   Widget build(BuildContext context) {

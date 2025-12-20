@@ -1,9 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'dart:developer';
-
 import 'package:hela_trip/firebase/firebase_init.dart';
-import 'package:hela_trip/services/firestore_services.dart';
+import 'package:hela_trip/services/auth_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,39 +16,32 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Firestore Test App',
-      home: FirestoreTestPage(),
+      home: GoogleSignUpPage(),
     );
   }
 }
 
-class FirestoreTestPage extends StatelessWidget {
-  FirestoreTestPage({super.key});
+class GoogleSignUpPage extends StatelessWidget {
+  GoogleSignUpPage({super.key});
 
-  // Create service instance
-  final FirebaseService _firebaseService = 
-        FirebaseService(firestore: FirebaseFirestore.instance);
+  final GoogleAuthService _authService = GoogleAuthService();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Firestore Test'), centerTitle: true),
+      appBar: AppBar(title: const Text("Sign Up")),
       body: Center(
-        child: ElevatedButton(
+        child: ElevatedButton.icon(
+          label: const Text("Sign up with Google"),
           onPressed: () async {
-            try {
-              await _firebaseService.addMessage();
-              log('Data sent to Firestore successfully!');
+            final user = await _authService.SignInWithGoogle();
+
+            if (user != null) {
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Data sent to Firestore ✅')),
-              );
-            } catch (e) {
-              log('Error sending data: $e');
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Failed to send data ❌')),
+                const SnackBar(content: Text("Sign-in successful")),
               );
             }
           },
-          child: const Text('Send Test Data'),
         ),
       ),
     );

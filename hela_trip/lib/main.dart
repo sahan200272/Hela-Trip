@@ -28,7 +28,8 @@ class FirestoreTestPage extends StatelessWidget {
   FirestoreTestPage({super.key});
 
   // Create service instance
-  final FirebaseService _firebaseService = FirebaseService(firestore: FirebaseFirestore.instance);
+  final FirebaseService _firebaseService = 
+        FirebaseService(firestore: FirebaseFirestore.instance);
 
   @override
   Widget build(BuildContext context) {

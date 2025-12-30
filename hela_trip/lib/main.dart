@@ -29,6 +29,7 @@ class GoogleSignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFF549464),
       appBar: AppBar(title: const Text("Sign In")),
       body: Center(
         child: ElevatedButton.icon(

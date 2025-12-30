@@ -29,10 +29,10 @@ class GoogleSignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Sign Up")),
+      appBar: AppBar(title: const Text("Sign In")),
       body: Center(
         child: ElevatedButton.icon(
-          label: const Text("Sign up with Google"),
+          label: const Text("Using Google"),
           onPressed: () async {
             final user = await _authService.SignInWithGoogle();
 

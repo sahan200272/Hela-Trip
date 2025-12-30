@@ -33,7 +33,7 @@ class GoogleAuthService{
     // Extracts the authenticated Firebase user from the login result
     final User user = userCredential.user!;
 
-    await FirebaseFirestore.instance.collection('user').add({
+    await FirebaseFirestore.instance.collection('users').doc(user.uid).set({
       'uid': user.uid,
       'name': user.displayName,
       'email': user.email,

@@ -12,7 +12,20 @@
           "package_name": "com.example.hela_trip"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "165574279956-i918jv1viced0ho764e31nst4uipna04.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hela_trip",
+            "certificate_hash": "5dd8aefed307e45c1f6d41b96ec6844918286b30"
+          }
+        },
+        {
+          "client_id": "165574279956-di8m647fn6i1iha3vru3t84dqnts5tsm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDjGJNbPhqYAxBt9UehihkrwMzv0auhLtQ"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "165574279956-di8m647fn6i1iha3vru3t84dqnts5tsm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "165574279956-kg2pmo81k3bnfc0bhup4oq3n41vsshng.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.helaTrip"
+              }
+            }
+          ]
         }
       }
     }

@@ -63,6 +63,9 @@ class DefaultFirebaseOptions {
     messagingSenderId: '165574279956',
     projectId: 'hela-trip',
     storageBucket: 'hela-trip.firebasestorage.app',
+    androidClientId: '165574279956-i918jv1viced0ho764e31nst4uipna04.apps.googleusercontent.com',
+    iosClientId: '165574279956-kg2pmo81k3bnfc0bhup4oq3n41vsshng.apps.googleusercontent.com',
     iosBundleId: 'com.example.helaTrip',
   );
+
 }

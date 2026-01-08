@@ -6,7 +6,7 @@ class UserService {
 
   Stream<AppUser> getUser(String uid) {
     return _db
-        .collection('users')
+        .collection('reg-users')
         .doc(uid)
         .snapshots()
         .map((doc) => AppUser.fromMap(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hela_trip/firebase/firebase_init.dart';
+import 'package:hela_trip/pages/user_profile.dart';
 import 'package:hela_trip/services/auth_service.dart';
 
 Future<void> main() async {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Firestore Test App',
+      title: 'Hela Trip',
       home: GoogleSignUpPage(),
     );
   }
@@ -35,13 +36,20 @@ class GoogleSignUpPage extends StatelessWidget {
         child: ElevatedButton.icon(
           label: const Text("Using Google"),
           onPressed: () async {
-            final user = await _authService.SignInWithGoogle();
+            final user = await _authService.signInWithGoogle();
 
             if (user != null) {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text("Sign-in successful")),
               );
             }
+// navigate to the user profile after login
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute<void>(
+                builder: (context) => UserProfile()
+              ),
+            );
           },
         ),
       ),

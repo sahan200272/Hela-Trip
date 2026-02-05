@@ -1,4 +1,4 @@
-# Hela Trip 🇱🇰 | Discover Sri Lanka
+# Hela Trip | Discover Sri Lanka
 **The official mobile companion for HelaTrip.com**
 
 Hela Trip is a cross-platform mobile application designed to simplify travel across Sri Lanka. Built with **Flutter** and **Firebase**, it allows travelers to discover hidden gems, plan custom itineraries, and book experiences in real-time.

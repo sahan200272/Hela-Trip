@@ -1,58 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hela_trip/firebase/firebase_init.dart';
-import 'package:hela_trip/pages/user_profile.dart';
-import 'package:hela_trip/services/auth_service.dart';
+import 'package:hela_trip/router/app_router.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeFirebase();
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: HelaTripApp()));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class HelaTripApp extends ConsumerWidget {
+  const HelaTripApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  Widget build(BuildContext context, WidgetRef ref) {
+    final router = ref.watch(goRouterProvider);
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Hela Trip',
-      home: GoogleSignUpPage(),
-    );
-  }
-}
-
-class GoogleSignUpPage extends StatelessWidget {
-  GoogleSignUpPage({super.key});
-
-  final GoogleAuthService _authService = GoogleAuthService();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFF549464),
-      appBar: AppBar(title: const Text("Sign In")),
-      body: Center(
-        child: ElevatedButton.icon(
-          label: const Text("Using Google"),
-          onPressed: () async {
-            final user = await _authService.signInWithGoogle();
-
-            if (user != null) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text("Sign-in successful")),
-              );
-            }
-// navigate to the user profile after login
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute<void>(
-                builder: (context) => UserProfile()
-              ),
-            );
-          },
-        ),
-      ),
+      routerConfig: router,
     );
   }
 }

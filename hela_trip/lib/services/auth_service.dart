@@ -4,13 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class GoogleAuthService {
-  // Firebase service that manages authentication in your app
+  // Pass --dart-define=GOOGLE_OAUTH_CLIENT_ID=<id> at build/run time.
+  static const String _googleClientId = String.fromEnvironment(
+    'GOOGLE_OAUTH_CLIENT_ID',
+  );
+
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
-  // Open the Google account selection screen
   final GoogleSignIn _googleSignIn = GoogleSignIn(
-    clientId:
-        "165574279956-di8m647fn6i1iha3vru3t84dqnts5tsm.apps.googleusercontent.com",
+    clientId: _googleClientId.isEmpty ? null : _googleClientId,
   );
 
   Future<User?> signInWithGoogle() async {
@@ -40,18 +42,15 @@ class GoogleAuthService {
       await FirebaseFirestore.instance
           .collection('reg-users')
           .doc(user.uid)
-          .set(
-          {
+          .set({
             'uid': user.uid,
             'name': user.displayName,
             'email': user.email,
             'photoUrl': user.photoURL,
             'createdAt': FieldValue.serverTimestamp(),
-          }, SetOptions(merge: true)
-          );
+          }, SetOptions(merge: true));
 
       return user;
-
     } catch (e) {
       debugPrint("Google Sign-In Error: $e");
       return null;

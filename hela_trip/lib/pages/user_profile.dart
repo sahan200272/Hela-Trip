@@ -1,47 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:hela_trip/services/user_service.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:hela_trip/models/user_model.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hela_trip/providers/auth_providers.dart';
+import 'package:hela_trip/providers/user_providers.dart';
 
-class UserProfile extends StatelessWidget {
+class UserProfile extends ConsumerWidget {
+  const UserProfile({super.key});
 
-  UserProfile({super.key});
-
-  final UserService userService = UserService();
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  
   @override
-  Widget build(BuildContext context) {
-    final currentUser = _auth.currentUser;
-
-    if (currentUser == null) {
-      return Scaffold(
-        appBar: AppBar(title: const Text("User Profile")),
-        body: const Center(
-          child: Text("No user logged in"),
-        ),
-      );
-    }
+  Widget build(BuildContext context, WidgetRef ref) {
+    final userAsync = ref.watch(currentUserProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text("User Profile")),
-      body: StreamBuilder<AppUser>(
-        stream: userService.getUser(currentUser.uid),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
+      appBar: AppBar(
+        title: const Text('User Profile'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () => ref.read(firebaseAuthProvider).signOut(),
+          ),
+        ],
+      ),
+      body: userAsync.when(
+        loading: () => const Center(child: CircularProgressIndicator()),
+        error: (e, _) => Center(child: Text('Error: $e')),
+        data: (user) {
+          if (user == null) {
+            return const Center(child: Text('No user data found'));
           }
-
-          if (snapshot.hasError) {
-            return Center(child: Text("Error: ${snapshot.error}"));
-          }
-
-          if (!snapshot.hasData) {
-            return const Center(child: Text("No user data found"));
-          }
-
-          final user = snapshot.data!;
-
           return Center(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
@@ -69,18 +54,12 @@ class UserProfile extends StatelessWidget {
                   const SizedBox(height: 10),
                   Text(
                     user.email,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey,
-                    ),
+                    style: const TextStyle(fontSize: 16, color: Colors.grey),
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    "UID: ${user.uid}",
-                    style: const TextStyle(
-                      fontSize: 12,
-                      color: Colors.grey,
-                    ),
+                    'UID: ${user.uid}',
+                    style: const TextStyle(fontSize: 12, color: Colors.grey),
                   ),
                 ],
               ),

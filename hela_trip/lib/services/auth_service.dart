@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class GoogleAuthService {
-  // Pass --dart-define=GOOGLE_OAUTH_CLIENT_ID=<id> at build/run time.
   static const String _googleClientId = String.fromEnvironment(
     'GOOGLE_OAUTH_CLIENT_ID',
   );

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hela_trip/pages/sign_in_page.dart';
 import 'package:hela_trip/pages/user_profile.dart';
+import 'package:hela_trip/pages/home_screen.dart';
 import 'package:hela_trip/providers/auth_providers.dart';
 
 final goRouterProvider = Provider<GoRouter>((ref) {
@@ -15,13 +16,17 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       final loggedIn = auth.valueOrNull != null;
       final atSignIn = state.matchedLocation == '/sign-in';
       if (!loggedIn) return atSignIn ? null : '/sign-in';
-      if (atSignIn) return '/profile';
+      if (atSignIn) return '/home';
       return null;
     },
     routes: [
       GoRoute(
         path: '/sign-in',
         builder: (context, state) => const SignInPage(),
+      ),
+      GoRoute(
+        path: '/home',
+        builder: (context, state) => const HomeScreen(),
       ),
       GoRoute(
         path: '/profile',

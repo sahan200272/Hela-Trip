@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hela_trip/auth_gate.dart';
 import 'package:hela_trip/firebase/firebase_init.dart';
 import 'package:hela_trip/router/app_router.dart';
 import 'package:hela_trip/services/auth_service.dart';
 import 'package:hela_trip/pages/user_profile.dart';
+import 'package:hela_trip/pages/home_screen.dart';
 
 Future<void> main() async {
 
@@ -49,14 +49,9 @@ class GoogleSignUpPage extends StatelessWidget {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text("Sign-in successful")),
               );
+              // Router will automatically redirect to /home screen
+              // when authStateProvider updates
             }
-// navigate to the user profile after login
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute<void>(
-                builder: (context) => UserProfile()
-              ),
-            );
           },
         ),
       ),

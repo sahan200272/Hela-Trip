@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:hela_trip/auth_gate.dart';
 import 'package:hela_trip/firebase/firebase_init.dart';
 import 'package:hela_trip/pages/user_profile.dart';
 import 'package:hela_trip/services/auth_service.dart';
 
 Future<void> main() async {
+
+  // do not run flutter widget code until flutter framework fully booted
   WidgetsFlutterBinding.ensureInitialized();
+
+  // make connection brtween flutter app and firebsae
   await initializeFirebase();
   runApp(const MyApp());
 }
@@ -17,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Hela Trip',
-      home: GoogleSignUpPage(),
+      home: AuthGate(clientId: "165574279956-di8m647fn6i1iha3vru3t84dqnts5tsm.apps.googleusercontent.com"),
     );
   }
 }

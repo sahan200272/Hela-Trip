@@ -72,5 +72,4 @@ class DefaultFirebaseOptions {
     storageBucket: 'hela-trip.firebasestorage.app',
     measurementId: 'G-XQQVFT7RH5',
   );
-
 }

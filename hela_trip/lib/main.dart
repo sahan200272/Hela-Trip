@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hela_trip/auth_gate.dart';
 import 'package:hela_trip/firebase/firebase_init.dart';
-import 'package:hela_trip/pages/user_profile.dart';
-import 'package:hela_trip/services/auth_service.dart';
+import 'package:hela_trip/router/app_router.dart';
 
 Future<void> main() async {
 
@@ -11,15 +10,16 @@ Future<void> main() async {
 
   // make connection brtween flutter app and firebsae
   await initializeFirebase();
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: HelaTripApp()));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class HelaTripApp extends ConsumerWidget {
+  const HelaTripApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  Widget build(BuildContext context, WidgetRef ref) {
+    final router = ref.watch(goRouterProvider);
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Hela Trip',
       home: AuthGate(clientId: "165574279956-di8m647fn6i1iha3vru3t84dqnts5tsm.apps.googleusercontent.com"),

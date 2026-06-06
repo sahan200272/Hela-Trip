@@ -13,8 +13,7 @@ void main() {
       await firebaseService.addMessage();
 
       // Assert
-      final snapshot =
-          await fakeFirestore.collection('test').get();
+      final snapshot = await fakeFirestore.collection('test').get();
 
       expect(snapshot.docs.length, 1);
       expect(snapshot.docs.first['message'], 'Hello Firebase');

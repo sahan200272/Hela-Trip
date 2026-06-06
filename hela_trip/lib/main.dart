@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hela_trip/auth_gate.dart';
 import 'package:hela_trip/firebase/firebase_init.dart';
 import 'package:hela_trip/router/app_router.dart';
+import 'package:hela_trip/services/auth_service.dart';
+import 'package:hela_trip/pages/user_profile.dart';
 
 Future<void> main() async {
 
@@ -22,7 +25,7 @@ class HelaTripApp extends ConsumerWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Hela Trip',
-      home: AuthGate(clientId: "165574279956-di8m647fn6i1iha3vru3t84dqnts5tsm.apps.googleusercontent.com"),
+      routerConfig: router,
     );
   }
 }

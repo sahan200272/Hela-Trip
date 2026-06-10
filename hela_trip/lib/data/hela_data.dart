@@ -99,8 +99,7 @@ const helaDestinations = <Destination>[
     tags: ['beach', 'surf'],
     bestMonths: 'Nov – Apr',
     duration: '3–4 days',
-    overview:
-        'Mirissa shapes the south coast in a perfect half-moon of sand.',
+    overview: 'Mirissa shapes the south coast in a perfect half-moon of sand.',
   ),
   Destination(
     id: 'galle',

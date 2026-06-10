@@ -23,9 +23,7 @@ class _DiscoverHomeState extends ConsumerState<DiscoverHome> {
   Widget build(BuildContext context) {
     final user = ref.watch(currentUserProvider).valueOrNull;
     final editorPicks = helaDestinations
-        .where(
-          (d) => ['sigiriya', 'ella', 'mirissa', 'galle'].contains(d.id),
-        )
+        .where((d) => ['sigiriya', 'ella', 'mirissa', 'galle'].contains(d.id))
         .toList();
     final trending = helaDestinations
         .where((d) => ['arugam', 'yala', 'kandy'].contains(d.id))
@@ -93,12 +91,8 @@ class _DiscoverHomeState extends ConsumerState<DiscoverHome> {
                     onPressed: () {},
                   ),
                   IconButton(
-                    icon: const Icon(
-                      Icons.logout,
-                      color: HelaColors.text2,
-                    ),
-                    onPressed: () =>
-                        ref.read(firebaseAuthProvider).signOut(),
+                    icon: const Icon(Icons.logout, color: HelaColors.text2),
+                    onPressed: () => ref.read(firebaseAuthProvider).signOut(),
                   ),
                 ],
               ),
@@ -268,10 +262,7 @@ class _DiscoverHomeState extends ConsumerState<DiscoverHome> {
                     decoration: BoxDecoration(
                       color: HelaColors.surf,
                       borderRadius: BorderRadius.circular(HelaRadii.card),
-                      border: Border.all(
-                        color: HelaColors.hair,
-                        width: 0.5,
-                      ),
+                      border: Border.all(color: HelaColors.hair, width: 0.5),
                     ),
                     padding: const EdgeInsets.all(12),
                     child: Column(
@@ -281,9 +272,9 @@ class _DiscoverHomeState extends ConsumerState<DiscoverHome> {
                         Icon(c.icon, size: 22, color: HelaColors.jungle),
                         Text(
                           c.label,
-                          style: HelaText.h2Sized(15).copyWith(
-                            color: HelaColors.text,
-                          ),
+                          style: HelaText.h2Sized(
+                            15,
+                          ).copyWith(color: HelaColors.text),
                         ),
                       ],
                     ),
@@ -308,9 +299,7 @@ class _DiscoverHomeState extends ConsumerState<DiscoverHome> {
                       onTap: () {},
                       onToggleSave: () => setState(() {
                         final id = trending[i].id;
-                        saved.contains(id)
-                            ? saved.remove(id)
-                            : saved.add(id);
+                        saved.contains(id) ? saved.remove(id) : saved.add(id);
                       }),
                     ),
                     if (i < trending.length - 1) ...[

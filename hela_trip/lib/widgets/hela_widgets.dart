@@ -57,12 +57,7 @@ class HStars extends StatelessWidget {
   final double value;
   final int? count;
   final double size;
-  const HStars({
-    super.key,
-    required this.value,
-    this.count,
-    this.size = 12,
-  });
+  const HStars({super.key, required this.value, this.count, this.size = 12});
 
   @override
   Widget build(BuildContext context) {
@@ -138,10 +133,7 @@ class HPhotoSlot extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [
-            tintFrom.withValues(alpha: 0.8),
-            const Color(0xFF2A2A1F),
-          ],
+          colors: [tintFrom.withValues(alpha: 0.8), const Color(0xFF2A2A1F)],
         ),
       ),
     );
@@ -283,11 +275,7 @@ class HDestinationHeroCard extends StatelessWidget {
                         ).copyWith(color: Colors.white),
                       ),
                       const SizedBox(height: 10),
-                      HStars(
-                        value: dest.rating,
-                        count: dest.reviews,
-                        size: 11,
-                      ),
+                      HStars(value: dest.rating, count: dest.reviews, size: 11),
                       const SizedBox(height: 4),
                       Text(
                         'from ${formatPrice(dest.baseCost, currency)} /day',

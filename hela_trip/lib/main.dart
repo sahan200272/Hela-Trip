@@ -3,8 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hela_trip/firebase/firebase_init.dart';
 import 'package:hela_trip/router/app_router.dart';
 import 'package:hela_trip/services/auth_service.dart';
-import 'package:hela_trip/pages/user_profile.dart';
-import 'package:hela_trip/pages/home_screen.dart';
 
 Future<void> main() async {
 

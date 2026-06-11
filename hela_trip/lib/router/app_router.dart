@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hela_trip/pages/discover_home.dart';
 import 'package:hela_trip/pages/sign_in_page.dart';
 import 'package:hela_trip/pages/user_profile.dart';
+import 'package:hela_trip/pages/home_screen.dart';
 import 'package:hela_trip/providers/auth_providers.dart';
 
 final goRouterProvider = Provider<GoRouter>((ref) {

@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hela_trip/pages/discover_home.dart';
 import 'package:hela_trip/pages/sign_in_page.dart';
 import 'package:hela_trip/pages/user_profile.dart';
 import 'package:hela_trip/pages/home_screen.dart';
@@ -16,7 +17,7 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       final loggedIn = auth.valueOrNull != null;
       final atSignIn = state.matchedLocation == '/sign-in';
       if (!loggedIn) return atSignIn ? null : '/sign-in';
-      if (atSignIn) return '/home';
+      if (atSignIn) return '/discover';
       return null;
     },
     routes: [
@@ -25,8 +26,8 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => const SignInPage(),
       ),
       GoRoute(
-        path: '/home',
-        builder: (context, state) => const HomeScreen(),
+        path: '/discover',
+        builder: (context, state) => const DiscoverHome(),
       ),
       GoRoute(
         path: '/profile',
